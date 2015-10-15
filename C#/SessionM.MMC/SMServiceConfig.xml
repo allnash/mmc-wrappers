@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configurations>
+  <configuration>
+    <ServerUrl>https://www.example.com</ServerUrl>
+    <ApiKey>key</ApiKey>
+    <ApiSecret>secret</ApiSecret>
+  </configuration>
+</Configurations>
