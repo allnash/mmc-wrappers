@@ -33,8 +33,12 @@ namespace SessionM.MMC.API
 
         internal static String getApiKey()
         {
+            if (API_KEY == null || S2S_API_SECRET == null)
+            {
+                API_KEY = SMServiceConfig.Instance.ApiKey;
+                S2S_API_SECRET = SMServiceConfig.Instance.ApiSecret;
+            }
             return API_KEY;
         }
-
     }
 }
