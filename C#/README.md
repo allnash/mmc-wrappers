@@ -13,6 +13,14 @@ Connect with us on www.sessionm.com
 * Microsoft .NET 4.5.2 or greater
 * Visual Studio 2015 Express / Professional
 
+##Third-Party Libararies
+
+SessionM MMC uses OpenSource JSON.Net libs distributed under MIT License 
+
+`http://www.newtonsoft.com/json`
+`https://github.com/JamesNK/Newtonsoft.Json`
+
+These Libraries are used for marshaling and unmarshalling JSON Strings into Objects and vice-versa.
 
 ##Installing 
 
