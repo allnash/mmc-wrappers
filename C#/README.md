@@ -13,7 +13,7 @@ Connect with us on www.sessionm.com
 * Microsoft .NET 4.5.2 or greater
 * Visual Studio 2015 Express / Professional
 
-##Third-Party Libararies
+##Third-Party Libs
 
 SessionM MMC uses OpenSource JSON.Net libs distributed under MIT License 
 
