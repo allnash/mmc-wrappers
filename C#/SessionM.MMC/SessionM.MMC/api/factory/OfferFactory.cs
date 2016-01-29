@@ -2,42 +2,36 @@
 using SessionM.MMC.models;
 using System;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace SessionM.MMC.API.factory
 {
     public class OfferFactory
     {
-      
-        public static async Task<IList<Offer>> getAllOffersByExternalId(String externalId)
+        public static async Task<IList<Offer>> getAllOffersByExternalId(String externalId, string locale = null)
         {
             SMRequest offerRequest = new SMRequest();
-            string responseString = await AsyncClient.get(APIRoutes.fetchOffersWithExternalIdRoute(externalId));
-            SMResponse m = JsonConvert.DeserializeObject<SMResponse>(responseString);
+            SMResponse m = await AsyncClient.get(APIRoutes.fetchOffersWithExternalIdRoute(externalId));
             if (m == null) return null;
             return m.offers;
         }
 
-        public static async Task<IList<Offer>> getAllOffersById(String Id)
+        public static async Task<IList<Offer>> getAllOffersById(String Id, string locale = null)
         {
 
             SMRequest offerRequest = new SMRequest();
-            string responseString = await AsyncClient.get(APIRoutes.fetchOffersWithIdRoute(Id));
-            SMResponse m = JsonConvert.DeserializeObject<SMResponse>(responseString);
+            SMResponse m = await AsyncClient.get(APIRoutes.fetchOffersWithIdRoute(Id));
             if (m == null) return null;
             return m.offers;
         }
 
-        public static async Task<IList<Offer>> getAllOffers()
+        public static async Task<IList<Offer>> getAllOffers(string locale = null)
         {
             
             SMRequest offerRequest = new SMRequest();
-            string responseString = await AsyncClient.get(APIRoutes.fetchOffersRoute());
-            SMResponse m = JsonConvert.DeserializeObject<SMResponse>(responseString);
+            SMResponse m = await AsyncClient.get(APIRoutes.fetchOffersRoute());
             if (m == null) return null;
             return m.offers;
         }
-        
     }
 }

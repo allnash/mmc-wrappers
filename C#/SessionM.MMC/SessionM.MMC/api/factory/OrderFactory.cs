@@ -3,13 +3,13 @@ using SessionM.MMC.models;
 using System;
 using System.Threading.Tasks;
 using System.Net;
-using Newtonsoft.Json;
 
 namespace SessionM.MMC.API.factory
 {
     public class OrderFactory
     {
-      
+        
+
         public static async Task<Order> createOrderByExternalId(String offerId, String ipAddress, String ExternalId)
         {
             IPAddress address;
@@ -29,10 +29,7 @@ namespace SessionM.MMC.API.factory
             
             SMRequest newOrderRequest = new SMRequest();
             newOrderRequest.order = myOrder;
-            string json = JsonConvert.SerializeObject(newOrderRequest, Formatting.Indented,
-              new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore });
-            string responseString = await AsyncClient.post(APIRoutes.createNewOrderForOfferWithExternalIdRoute(offerId,ExternalId),json);
-            SMResponse m = JsonConvert.DeserializeObject<SMResponse>(responseString);
+            SMResponse m = await AsyncClient.post(APIRoutes.createNewOrderForOfferWithExternalIdRoute(offerId,ExternalId), newOrderRequest);
             if (m == null) return null;
             return m.order;
         }
@@ -57,10 +54,7 @@ namespace SessionM.MMC.API.factory
 
             SMRequest newOrderRequest = new SMRequest();
             newOrderRequest.order = myOrder;
-            string json = JsonConvert.SerializeObject(newOrderRequest, Formatting.Indented,
-              new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore });
-            string responseString = await AsyncClient.post(APIRoutes.createNewOrderForOfferWithExternalIdRoute(offer.id.ToString(), ExternalId), json);
-            SMResponse m = JsonConvert.DeserializeObject<SMResponse>(responseString);
+            SMResponse m = await AsyncClient.post(APIRoutes.createNewOrderForOfferWithExternalIdRoute(offer.id.ToString(), ExternalId), newOrderRequest);
             if (m == null) return null;
             return m.order;
         }
@@ -86,10 +80,7 @@ namespace SessionM.MMC.API.factory
 
             SMRequest newOrderRequest = new SMRequest();
             newOrderRequest.order = myOrder;
-            string json = JsonConvert.SerializeObject(newOrderRequest, Formatting.Indented,
-              new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore });
-            string responseString = await AsyncClient.post(APIRoutes.createNewOrderForOfferWithIdRoute(offerId, Id), json);
-            SMResponse m = JsonConvert.DeserializeObject<SMResponse>(responseString);
+            SMResponse m = await AsyncClient.post(APIRoutes.createNewOrderForOfferWithIdRoute(offerId, Id), newOrderRequest);
             return m.order;
         }
         

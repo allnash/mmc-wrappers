@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SessionM.MMC.models
 {
-    public class Offer : ISMModel
+    public class OfferOption : ISMModel
     {
         [JsonProperty("id")]
         public int id { get; set; }
@@ -34,14 +34,10 @@ namespace SessionM.MMC.models
         [DefaultValue(null)]
         [JsonProperty("logo")]
         public string logo { get; set; }
-
         [DefaultValue(null)]
         [JsonProperty("data")]
         public object data { get; set; }
 
-        [DefaultValue(null)]
-        [JsonProperty("options")]
-        public IList<OfferOption> offerOptions { get; set; }
 
     }
 }

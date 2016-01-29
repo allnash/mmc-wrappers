@@ -28,5 +28,18 @@ namespace SessionM.MMC.JsonService
         [DefaultValue(false)]
         [JsonProperty("auto_claim")]
         public bool autoClaim { get; set; }
+
+        [DefaultValue(null)]
+        [JsonProperty("image_validation")]
+        public ImageValidation imageValidation { get; set; }
+
+        [DefaultValue(null)]
+        [JsonProperty("challenge")]
+        public Challenge challenge { get; set; }
+
+        [DefaultValue(null)]
+        [JsonProperty("verification")]
+        public Verification verification { get; set; }
+
     }
 }

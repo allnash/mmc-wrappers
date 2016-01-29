@@ -10,13 +10,6 @@ using System.Threading.Tasks;
 
 namespace SessionM.MMC.JsonService
 {
-    public class Errors
-    {
-        [DefaultValue(null)]
-        [JsonProperty("message")]
-        public string message { get; set; }
-    }
-
     public class Model
     {
         [JsonProperty("name")]
@@ -36,7 +29,7 @@ namespace SessionM.MMC.JsonService
         public string status { get; set; }
         [DefaultValue(null)]
         [JsonProperty("errors")]
-        public Errors errors { get; set; }
+        public object errors { get; set; }
         [DefaultValue(null)]
         [JsonProperty("user")]
         public User user { get; set; }
@@ -49,6 +42,66 @@ namespace SessionM.MMC.JsonService
         [DefaultValue(null)]
         [JsonProperty("order")]
         public Order order { get; set; }
+        [DefaultValue(null)]
+        [JsonProperty("verification")]
+        public Verification verification { get; set; }
 
+        [DefaultValue(null)]
+        [JsonProperty("image_validation")]
+        public ImageValidation imageValidation { get; set; }
+
+        [DefaultValue(null)]
+        [JsonProperty("challenge")]
+        public Challenge challenge { get; set; }
+
+        [DefaultValue(null)]
+        [JsonProperty("cursor")]
+        public string cursor { get; set; }
+
+        [DefaultValue(null)]
+        [JsonProperty("transactions")]
+        public IList<UserTransactionItem> transactions { get; set; }
+
+        [DefaultValue(null)]
+        [JsonProperty("image_validations")]
+        public IList<ImageValidation> imageValidations { get; set; }
+
+        public Verification GetVerificationResponseModel()
+        {
+            Verification retVal = null;
+            retVal = this.verification == null ? new Verification() : this.verification;
+            retVal.error = this.errors;
+            
+            return retVal;
+        }
+
+        public User GetUserResponseModel()
+        {
+            User retVal = null;
+            retVal = this.user == null ? new User() : this.user;
+            retVal.error = this.errors;
+            retVal.cursor = this.cursor;
+            retVal.transactions = this.transactions;
+
+            return retVal;
+        }
+        
+        public ImageValidation GetImageValidationModel()
+        {
+            ImageValidation retVal = null;
+            retVal = this.imageValidation == null ? new ImageValidation() : this.imageValidation;
+            retVal.error = this.errors;
+            
+            return retVal;
+        }
+
+        public Challenge GetChallengeModel()
+        {
+            Challenge retVal = null;
+            retVal = this.challenge == null ? new Challenge() : this.challenge;
+            retVal.errors = this.errors;
+
+            return retVal;
+        }
     }
 }

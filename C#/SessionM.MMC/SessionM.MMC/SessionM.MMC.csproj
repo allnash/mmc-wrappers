@@ -58,25 +58,35 @@
   <ItemGroup>
     <Compile Include="API\APIRoutes.cs" />
     <Compile Include="API\factory\AttributeFactory.cs" />
+    <Compile Include="API\factory\ChallengeFactory.cs" />
     <Compile Include="API\factory\EventFactory.cs" />
     <Compile Include="API\factory\OrderFactory.cs" />
     <Compile Include="API\factory\OfferFactory.cs" />
     <Compile Include="API\factory\UserFactory.cs" />
     <Compile Include="API\APIConstants.cs" />
     <Compile Include="API\factory\UserTagsFactory.cs" />
+    <Compile Include="API\ImageValidationFactory.cs" />
     <Compile Include="API\SMServiceConfig.cs" />
     <Compile Include="jsonservice\AsyncClient.cs" />
     <Compile Include="jsonservice\SMRequest.cs" />
     <Compile Include="jsonservice\SMResponse.cs" />
     <Compile Include="models\attributes\IAttributes.cs" />
+    <Compile Include="models\Challenge.cs" />
+    <Compile Include="models\enums\ImageValidationTypeEnum.cs" />
+    <Compile Include="models\ImageValidation.cs" />
+    <Compile Include="models\ImageValidationItem.cs" />
     <Compile Include="models\interfaces\ISMEvent.cs" />
     <Compile Include="models\Offer.cs" />
     <Compile Include="models\interfaces\ISMModel.cs" />
+    <Compile Include="models\OfferOption.cs" />
     <Compile Include="models\Order.cs" />
+    <Compile Include="models\ProxyId.cs" />
     <Compile Include="models\User.cs" />
     <Compile Include="models\attributes\AttributesMetaModel.cs" />
     <Compile Include="models\attributes\MyAttributesModel.cs" />
     <Compile Include="models\events\ActivityEvents.cs" />
+    <Compile Include="models\UserTransactionItem.cs" />
+    <Compile Include="models\Verification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="models\UserProfile.cs" />
   </ItemGroup>

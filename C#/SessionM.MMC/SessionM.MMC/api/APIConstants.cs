@@ -31,7 +31,7 @@ namespace SessionM.MMC.API
             return API_KEY + ":" + S2S_API_SECRET;
         }
 
-        internal static String getApiKey()
+        public static String getApiKey()
         {
             if (API_KEY == null || S2S_API_SECRET == null)
             {
@@ -39,6 +39,16 @@ namespace SessionM.MMC.API
                 S2S_API_SECRET = SMServiceConfig.Instance.ApiSecret;
             }
             return API_KEY;
+        }
+
+        public static String getS2SSecret()
+        {
+            if (API_KEY == null || S2S_API_SECRET == null)
+            {
+                API_KEY = SMServiceConfig.Instance.ApiKey;
+                S2S_API_SECRET = SMServiceConfig.Instance.ApiSecret;
+            }
+            return S2S_API_SECRET;
         }
     }
 }

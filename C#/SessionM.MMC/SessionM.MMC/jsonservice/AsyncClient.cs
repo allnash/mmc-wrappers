@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Threading;
 using SessionM.MMC.API;
+using Newtonsoft.Json;
 
 namespace SessionM.MMC.JsonService
 {
@@ -41,7 +42,7 @@ namespace SessionM.MMC.JsonService
     public class AsyncClient
     {
 
-        public static async Task<String> get(String Path)
+        public static async Task<String> getResponseString(String Path)
         {
             HttpResponseMessage response;
             var client = new HttpClient(new LoggingHandler(new HttpClientHandler()));
@@ -70,7 +71,14 @@ namespace SessionM.MMC.JsonService
             return "";
         }
 
-        public static async Task<String> post(String Path, String JsonString)
+        public static async Task<SMResponse> get(String path)
+        {
+            string responseString = await getResponseString(path);
+            SMResponse m = JsonConvert.DeserializeObject<SMResponse>(responseString);
+            return m;
+        }
+
+        public static async Task<String> postResponseString(String Path, String JsonString)
         {
             HttpResponseMessage response;
             CancellationTokenSource cts;
@@ -109,7 +117,16 @@ namespace SessionM.MMC.JsonService
             return "";
         }
 
-        public static async Task<String> put(String Path, String JsonString)
+        public static async Task<SMResponse> post(string path, SMRequest request)
+        {
+            string json = JsonConvert.SerializeObject(request, Formatting.Indented,
+             new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, });
+            string responseString = await postResponseString(path, json);
+            SMResponse m = JsonConvert.DeserializeObject<SMResponse>(responseString);
+            return m;
+        }
+
+        public static async Task<String> putResponseString(String Path, String JsonString)
         {
             HttpResponseMessage response;
             CancellationTokenSource cts;
@@ -148,7 +165,16 @@ namespace SessionM.MMC.JsonService
             return "";
         }
 
-        public static async Task<String> delete(String Path)
+        public static async Task<SMResponse> put(string path, SMRequest request)
+        {
+            string json = JsonConvert.SerializeObject(request, Formatting.Indented,
+                 new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore });
+            string responseString = await putResponseString(path, json);
+            SMResponse m = JsonConvert.DeserializeObject<SMResponse>(responseString);
+            return m;
+        }
+
+        public static async Task<String> deleteResponseString(String Path)
         {
             HttpResponseMessage response;
             var client = new HttpClient(new LoggingHandler(new HttpClientHandler()));
@@ -177,6 +203,13 @@ namespace SessionM.MMC.JsonService
 
             return "";
 
+        }
+
+        public static async Task<SMResponse> delete(string path)
+        {
+            string responseString = await deleteResponseString(path);
+            SMResponse m = JsonConvert.DeserializeObject<SMResponse>(responseString);
+            return m;
         }
     }
 }
