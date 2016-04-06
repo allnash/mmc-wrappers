@@ -1,0 +1,10 @@
+sessionm {
+
+  api_host = "api.sessionm.com"
+
+  property {
+    api_key = ""
+    secret = ""
+  }
+
+}
