@@ -6,7 +6,8 @@ package com.sessionm.api;
 public class APIRoutes {
 
 
-    public static String createUserRoute() {
+    public static String createUserRoute()
+    {
         return APIConstants.serviceUrl() + "/apps/" + APIConstants.getApiKey() + "/users";
     }
 
@@ -68,18 +69,69 @@ public class APIRoutes {
         return APIConstants.serviceUrl() + "/apps/" + APIConstants.getApiKey() + "/users/" + Id + "/offers/" + offerId + "/orders";
     }
 
-    public static String createNewOrderForOfferWithExternalIdRoute(String offerId, String ExternalId)
+    public static String createNewOrderForOfferWithExternalIdRoute(String offerId, String externalId)
     {
-        return APIConstants.serviceUrl() + "/apps/" + APIConstants.getApiKey() + "/external/users/" + ExternalId + "/offers/" + offerId + "/orders";
+        return APIConstants.serviceUrl() + "/apps/" + APIConstants.getApiKey() + "/external/users/" + externalId + "/offers/" + offerId + "/orders";
     }
 
-    public static String sendEventWithExternalIdRoute(String ExternalId)
+    public static String sendEventWithExternalIdRoute(String externalId)
     {
-        return APIConstants.serviceUrl() + "/apps/" + APIConstants.getApiKey() + "/external/users/" + ExternalId + "/events";
+        return APIConstants.serviceUrl() + "/apps/" + APIConstants.getApiKey() + "/external/users/" + externalId + "/events";
     }
 
     public static String sendEventWithIdRoute(String Id)
     {
         return APIConstants.serviceUrl() + "/apps/" + APIConstants.getApiKey() + "/users/" + Id + "/events";
     }
+
+    public static String createContentRoute()
+    {
+        return APIConstants.serviceUrl() + "/apps/" + APIConstants.getApiKey() + "/contents" ;
+    }
+
+    public static String fetchContentWithExternalId(String externalId)
+    {
+        return APIConstants.serviceUrl() + "/apps/" + APIConstants.getApiKey() + "/external/contents/" + externalId ;
+    }
+
+    public static String fetchContentWithId(String Id)
+    {
+        return APIConstants.serviceUrl() + "/apps/" + APIConstants.getApiKey() + "/contents/" + Id ;
+    }
+
+    public static String updateContentWithExternalId(String externalId)
+    {
+        return fetchContentWithExternalId(externalId);
+    }
+
+    public static String updateContentWithId(String Id)
+    {
+        return fetchContentWithId(Id);
+    }
+
+    public static String fetchAllContentForUserWithExternalId(String externalId)
+    {
+        return APIConstants.serviceUrl() + "/apps/" + APIConstants.getApiKey() + "/external/users/" + externalId + "/contents";
+    }
+
+    public static String fetchAllContentForUserWithId(String Id)
+    {
+        return APIConstants.serviceUrl() + "/apps/" + APIConstants.getApiKey() + "/users/" + Id + "/contents";
+    }
+
+    public static String fetchAllContentFeeds()
+    {
+        return APIConstants.serviceUrl() + "/apps/" + APIConstants.getApiKey() + "/feeds";
+    }
+
+    public static String fetchContentFeedWithExternalId(String externalId)
+    {
+        return APIConstants.serviceUrl() + "/apps/" + APIConstants.getApiKey() + "/external/feeds/" + externalId;
+    }
+
+    public static String fetchContentFeedWithId(String Id)
+    {
+        return APIConstants.serviceUrl() + "/apps/" + APIConstants.getApiKey() + "/feeds/" + Id;
+    }
+
 }
