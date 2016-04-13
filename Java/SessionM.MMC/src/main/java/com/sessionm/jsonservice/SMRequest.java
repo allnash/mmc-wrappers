@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.sessionm.models.Content;
 import com.sessionm.models.User;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
@@ -24,6 +25,8 @@ public class SMRequest {
 
     @JsonProperty("user")
     private User user;
+    @JsonProperty("content")
+    private Content content;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -50,6 +53,25 @@ public class SMRequest {
     public SMRequest withUser(User user) {
         this.user = user;
         return this;
+    }
+
+    /**
+    * @return content
+    * The content
+    */
+    @JsonProperty("content")
+    public Content getContent() {
+        return content;
+    }
+
+    /**
+     *
+     * @param content
+     * The content
+     */
+    @JsonProperty("content")
+    public void setContent(Content content) {
+        this.content = content;
     }
 
     @Override

@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.UUID;
 
 
-public class APIUsersTest {
+public class ContentFeedsTest {
 
     @BeforeClass
     public static void setup() {
