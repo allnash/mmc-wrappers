@@ -54,6 +54,16 @@ public class User {
     private Double nextTierPercentage;
     @JsonProperty("account_status")
     private String accountStatus;
+    @JsonProperty("tier_system")
+    private String tierSystem;
+    @JsonProperty("available_points")
+    private Integer availablePoints;
+    @JsonProperty("test_points")
+    private Integer testPoints;
+    @JsonProperty("unclaimed_achievement_count")
+    private Integer unclaimedAchievementCount;
+    @JsonProperty("test_account")
+    private Boolean testAccount;
     @JsonProperty("user_profile")
     private Map<String, Object> user_profile = new HashMap<String, Object>();
 
@@ -421,6 +431,98 @@ public class User {
     @JsonProperty("ip")
     public void setIp(String ip) {
         this.ip = ip;
+    }
+
+
+    /**
+     *
+     * @return tierSystem
+     * The tier System
+     */
+    public String getTierSystem() {
+        return tierSystem;
+    }
+
+    /**
+     *
+     * @param tierSystem
+     * The tier System
+     */
+    public void setTierSystem(String tierSystem) {
+        this.tierSystem = tierSystem;
+    }
+
+
+    /**
+     *
+     * @return  availablePoints
+     * The total number of Points balance of a User. Total point balance does not include Test Points
+     */
+    public Integer getAvailablePoints() {
+        return availablePoints;
+    }
+
+    /**
+     *
+     * @param availablePoints
+     * The total number of Points balance of a User. Total point balance does not include Test Points
+     */
+    public void setAvailablePoints(Integer availablePoints) {
+        this.availablePoints = availablePoints;
+    }
+
+    /**
+     *
+     * @return  testPoints
+     * The total number of Test Points balance.
+     */
+    public Integer getTestPoints() {
+        return testPoints;
+    }
+
+    /**
+     *
+     * @param testPoints
+     * The total number of Test Points balance.
+     */
+    public void setTestPoints(Integer testPoints) {
+        this.testPoints = testPoints;
+    }
+
+    /**
+     *
+     * @return  unclaimedAchievementCount
+     * The unclaimed achievement Count
+     */
+    public Integer getUnclaimedAchievementCount() {
+        return unclaimedAchievementCount;
+    }
+
+    /**
+     *
+     * @param unclaimedAchievementCount
+     * The unclaimed achievement Count
+     */
+    public void setUnclaimedAchievementCount(Integer unclaimedAchievementCount) {
+        this.unclaimedAchievementCount = unclaimedAchievementCount;
+    }
+
+    /**
+     *
+     * @return testAccount
+     * Flag indicate if account is Test or Not. 'true' indicates Account is marked as Test
+     */
+    public Boolean getTestAccount() {
+        return testAccount;
+    }
+
+    /**
+     *
+     * @param  testAccount
+     * Flag indicate if account is Test or Not. 'true' indicates Account is marked as Test
+     */
+    public void setTestAccount(Boolean testAccount) {
+        this.testAccount = testAccount;
     }
 
     @Override

@@ -15,8 +15,6 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
 import org.apache.http.impl.nio.client.HttpAsyncClients;
-import sun.net.www.protocol.http.AuthScheme;
-import sun.security.krb5.Realm;
 
 import java.util.concurrent.Future;
 
