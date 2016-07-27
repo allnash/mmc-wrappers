@@ -63,6 +63,28 @@ public class UserFactory
 
     }
 
+    public static Future<User> fetchUserWithId(String id)
+    {
+        // thread pool size 5
+        ExecutorService executor = Executors.newFixedThreadPool(5);
+        Future<HttpResponse> responseString = AsyncClient.get(APIRoutes.fetchUserWithIdRoute() + id);
+
+        Future<User> future = executor.submit(new CallableTask(responseString));
+
+        return future;
+
+    }
+
+    public static Future<User> fetchUserWithExternalId(String id)
+    {
+        // thread pool size 5
+        ExecutorService executor = Executors.newFixedThreadPool(5);
+        Future<HttpResponse> responseString = AsyncClient.get(APIRoutes.fetchUserWithExternalIdRoute() + id);
+        Future<User> future = executor.submit(new CallableTask(responseString));
+        return future;
+
+    }
+
      static class CallableTask implements Callable<User> {
 
          private Future<HttpResponse> responseString;

@@ -1,6 +1,6 @@
 sessionm {
 
-  api_host = "API_HOSTNAME"
+  api_host = "JUST_API_HOSTNAME_WITHOUT_PROTOCOL"
 
   property {
     api_key = ""

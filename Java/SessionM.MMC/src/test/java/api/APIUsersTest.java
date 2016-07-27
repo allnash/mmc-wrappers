@@ -41,6 +41,23 @@ public class APIUsersTest {
 
     }
 
+    @Test
+    public void testFetchUser() throws Exception {
+        String uuid = UUID.randomUUID().toString();
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+        String dateInString = "1982-08-31";
+        User u = UserFactory.createUser(uuid,"test" + TestUtility.generateRandomString() + "@example.com", UserFactory.UserGender.f,sdf.parse(dateInString),"1.1.1.1").get();
+        Assert.assertNotNull(u);
+        Assert.assertTrue(uuid.equals(u.getExternalId()));
+        System.out.println("User created - " + u.getExternalId());
+        System.out.println("User email - " + u.getEmail());
+        User fu = UserFactory.fetchUserWithId(u.getId()).get();
+        Assert.assertNotNull(fu);
+        User fue = UserFactory.fetchUserWithExternalId(u.getExternalId()).get();
+        Assert.assertNotNull(fue);
+    }
+
 
     @Test
     public void testUserUpdate() throws Exception {
