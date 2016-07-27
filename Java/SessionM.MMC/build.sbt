@@ -1,6 +1,10 @@
-name := "SessionM.MMC"
+name := "MMC"
 
 version := "1.0"
+
+organization  := "com.sessionm"
+
+publishMavenStyle := true
 
 scalaVersion := "2.11.7"
 
@@ -16,4 +20,5 @@ libraryDependencies ++= Seq(
 
 fork in Test := true
 testOptions += Tests.Argument(TestFrameworks.JUnit, "-v", "-a")
+
 compileOrder := CompileOrder.JavaThenScala
